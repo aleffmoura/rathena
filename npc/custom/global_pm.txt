@@ -1,0 +1,136 @@
+//////////////////////////////////////////
+//NPC: Chat Global		   	//
+//////////////////////////////////////////
+//Description: npc Que manda menssagem	//
+// global parecido com torpedo vip	//
+//////////////////////////////////////////
+//Changelog:				//
+// V1.0 - Script Original por Douglas 	//
+// V2.0 - Script Reformulador por Rick	//
+//  	adicionado cobrança de zeny	//
+//	por cada menssagem		//
+//	+ menssagem vip onde é cobrado	//
+//	uma quantia menor de zeny	//
+//////////////////////////////////////////
+-	script	mapa	-1,{
+
+OnWhisperGlobal:
+
+Set @mapa,10000000; // Zeny Cobrado de Player free Para Mandar Mensagem para o mapa
+
+If (Zeny < @mapa) {
+	mes "Cada Mensagem custa "+@mapa+"z";
+	mes "você não tem o zeny necessario para mandar a mensagem";
+	Close;
+}
+	set zeny,zeny-@mapa;
+getmapxy .@mapname$, .@x, .@y, 0;
+mapannounce .@mapname$,strcharinfo(0)+":"+@whispervar0$, bc_map;
+dispbottom "Cada mensagem tem um custo de "+@mapa+"z";
+
+end;
+}
+-	script	global	-1,{
+
+OnWhisperGlobal:
+
+Set @global,50000000; //Zeny Cobrado de player free para mandar Mensagem para todo servidor
+
+If (Zeny < @global) {
+	mes "Cada Mensagem custa "+@global+"z";
+	mes "você não tem o zeny necessario para mandar a mensagem";
+	Close;
+}
+Set Zeny, Zeny - @global;
+announce ""+strcharinfo(0)+" : "+@whispervar0$+"",bc_yellow|bc_all;
+dispbottom "Cada mensagem tem um custo de "+@global+"z";
+end;
+}
+-	script	mapavip	-1,{
+
+OnWhisperGlobal:
+
+Set @mapavip,1000000; // Zeny Cobrado de Player free Para Mandar Mensagem para o mapa
+Set @viplevel,1;
+If (GetGmLevel() < @viplevel) {
+	mes "Você não pode usar meus serviços.";
+	Close;
+}
+
+If (Zeny < @mapavip) {
+	mes "Cada Mensagem custa "+@mapavip+"z";
+	mes "você não tem o zeny necessario para mandar a mensagem";
+	Close;
+}
+	set zeny,zeny-@mapavip;
+getmapxy .@mapname$, .@x, .@y, 0;
+mapannounce .@mapname$,strcharinfo(0)+":"+@whispervar0$, bc_map;
+dispbottom "Cada mensagem tem um custo de "+@mapavip+"z";
+
+end;
+}
+
+-	script	globalvip	-1,{
+
+OnWhisperGlobal:
+
+Set @globalvip,5000000; // Zeny Cobrado de Player free Para Mandar Mensagem para o mapa
+Set @viplevel,1;
+If (GetGmLevel() < @viplevel) {
+	mes "Você não pode usar meus serviços.";
+	Close;
+}
+
+If (Zeny < @globalvip) {
+	mes "Cada Mensagem custa "+@globalvip+"z";
+	mes "você não tem o zeny necessario para mandar a mensagem";
+	Close;
+}
+	set zeny,zeny-@globalvip;
+announce ""+strcharinfo(0)+" : "+@whispervar0$+"",bc_yellow|bc_all;
+dispbottom "Cada mensagem tem um custo de "+@globalvip+"z";
+end;
+}
+
+prontera,141,169,6	script	Sistema de Chat	707,{
+
+Set .Zenymapa,10000000; // Zeny Cobrado de Player free Para Mandar Mensagem para o mapa
+Set .Zenyglobal,50000000; // Zeny Cobrado de Player free Para Mandar Mensagem para o Todo servidor
+Set .Zenymapavip,1000000; // Zeny Cobrado de Player VIP Para Mandar Mensagem para o mapa
+Set .Zenyglobalvip,5000000; // Zeny Cobrado de Player VIP Para Mandar Mensagem para o Todo servidor
+Set .ReqLevel, 1; // level Vip do seu servidor
+
+If (GetGmLevel() < .ReqLevel) {
+mes "ja soube do nosso novo sistema de chat?";
+next;
+mes "Para falar com todos do servidor";
+mes "digite ^FF0000npc:global^000000 na barra de pm . A do lado esquerdo da de chat";
+mes "ja para todo o mapa,use ^FF0000npc:mapa^000000, caso tenha feito isso,";
+next;
+mes "pode ir mandando mensagem o quanto quiser,nao ira aparecer janelinhas.";
+mes " a menos que você esteja sem dinheiro para pagar a menssagem";
+next;
+mes "sera cobrada uma taxa de ^0000FF"+ .Zenymapa +"z^000000 para mensagem  para todo o mapa";
+mes "E para todo servidor sera ^0000FF"+ .Zenyglobal +"z"^000000;
+next;
+mes "Mas nao sera tolerado xingamentos,floods ou qualquer outra coisa pra prejudicar players e servidor.";
+mes "Caso isso aconteca,voce sera punido!";
+close;
+}
+
+mes "ja soube do nosso novo sistema de chat?";
+next;
+mes "Para falar com todos do servidor";
+mes "digite ^FF0000npc:globalvip^000000 na barra de pm . A do lado esquerdo da de chat,";
+mes "ja para todo o mapa,use ^FF0000npc:mapavip^000000, caso tenha feito isso,";
+next;
+mes "pode ir mandando mensagem o quanto quiser,nao ira aparecer janelinhas.";
+mes " a menos que você esteja sem dinheiro para pagar a menssagem";
+next;
+mes "sera cobrada uma taxa de ^0000FF"+ .Zenymapavip +"z^000000 para mensagem  para todo o mapa";
+mes "E para todo servidor sera ^0000FF"+ .Zenyglobalvip +"z^000000";
+next;
+mes "Mas nao sera tolerado xingamentos,floods ou qualquer outra coisa pra prejudicar players e servidor.";
+mes "Caso isso aconteca,voce sera punido!";
+close;
+}

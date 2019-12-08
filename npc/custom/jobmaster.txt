@@ -23,15 +23,15 @@ function	Require_Level	{
 	if (BaseLevel < getarg(0) || JobLevel < getarg(1)) {
 		.@blvl = getarg(0) - BaseLevel;
 		.@jlvl = getarg(1) - JobLevel;
-		mes "Level requirement:";
+		mes "Nível requerido:";
 		mes ((getarg(0)>1)? 
 			"^bb0000"+getarg(0)+"^000000 (^bb0000Base^000000) / ":"")+"^00bb00"+
 			getarg(1)+"^000000 (^00bb00Job^000000)";
-		mes "You need " +
-			((.@blvl > 0) ? "^bb0000"+.@blvl+"^000000 more base levels " + 
+		mes "Você precisa " +
+			((.@blvl > 0) ? "^bb0000"+.@blvl+"^000000 a mais de níveis de base " + 
 				((.@jlvl > 0) ? "and " : "") : "") +
-			((.@jlvl > 0) ? "^00bb00"+.@jlvl+"^000000 more job levels " : "") +
-			"to continue.";
+			((.@jlvl > 0) ? "^00bb00"+.@jlvl+"^000000 a mais de níveis de classe" : "") +
+			"para continuar.";
 		close;
 	}
 	return;
@@ -91,19 +91,19 @@ function	Check_Riding	{
 	// would make this NPC bigger just to handle with
 	// those special cases.
 	if (checkfalcon() || checkcart() || checkriding() || ismounting()) {
-		mes "Please remove your " +
-			((checkfalcon()) ? "falcon" : "") +
-			((checkcart()) ? "cart" : "") +
-			((checkriding()) ? "Peco" : "") +
-			((ismounting()) ? "mount" : "") +
-			" before proceeding.";
+		mes "Por favor remova " +
+			((checkfalcon()) ? "falcão" : "") +
+			((checkcart()) ? "carrinho" : "") +
+			((checkriding()) ? "Pecopeco" : "") +
+			((ismounting()) ? "montaria" : "") +
+			" antes de continuar.";
 		close;
 	}
 	return;
 }
 function	Check_SkillPoints	{
 	if (.SkillPointCheck && SkillPoint) {
-		mes "Please use all your skill points before proceeding.";
+		mes "Por favor use todos seus pontos de habilidade antes de continuar.";
 		close;
 	}
 	return;
@@ -213,7 +213,7 @@ function	Job_Options	{
 					Job_Options(.@job_opt, Job_Baby_Summoner);
 				break;
 			default:
-				mes "An error has occurred.";
+				mes "Um erro aconteceu.";
 				close;
 		}
 	} else if( Is_First_Cls(.@eac) || 				// First Class
@@ -254,7 +254,7 @@ function	Job_Menu	{
 	while(true) {
 		.@opt_cnt =  getarraysize(getarg(0));
 		if( .@opt_cnt <= 0 ) {
-			mes "No more jobs are available.";
+			mes "Não existem classes Disponíveis.";
 			close;
 		}
 
@@ -262,16 +262,16 @@ function	Job_Menu	{
 		if (.@opt_cnt > 1) {
 			// Multiple job classes given. Select one and save it to .@class
 			// After that confirm .@class
-			mes "Select a job.";
+			mes "Selecione uma classe.";
 			.@menu$ = "";
 			for (.@i = 0; .@i < .@opt_cnt; .@i++) {
 				if( getelementofarray(getarg(0), .@i) == Job_Novice_High)
-					.@jobname$ = "^0055FFRebirth^000000";
+					.@jobname$ = "^0055FFRenascer^000000";
 				else
 					.@jobname$ = jobname(getelementofarray(getarg(0), .@i));
 				.@menu$ = .@menu$ + " ~ " + .@jobname$ + ":";
 			}
-			.@menu$ = .@menu$+" ~ ^777777Cancel^000000";
+			.@menu$ = .@menu$+" ~ ^777777Cancelar^000000";
 			.@selected = select(.@menu$) - 1;
 			if( .@selected < 0 || .@selected >= .@opt_cnt )
 				close;
@@ -285,8 +285,8 @@ function	Job_Menu	{
 			// Super Baby can both be selected in one of the first class
 			// changes. That's why the Level Requirement is after and not before
 			// the selection.
-			mes "A base level of " + .SNovice +
-				" is required to turn into a " + jobname(.@class) + ".";
+			mes "Nível de Base para " + .SNovice +
+				" é requirido para virar um " + jobname(.@class) + ".";
 			return;
 		}
 		// Confirm the Class
@@ -303,7 +303,7 @@ function	Job_Change	{
 	.@to_cls = getarg(0);
 	next;
 	mes .NPCName$;
-	mes "You are now " + callfunc("F_InsertArticle", jobname(.@to_cls)) + "!";
+	mes "Você agora é " + callfunc("F_InsertArticle", jobname(.@to_cls)) + "!";
 	if (.@to_cls == Job_Novice_High && .LastJob)
 		lastJob = Class; // Saves the lastJob for rebirth
 	jobchange .@to_cls;
@@ -328,16 +328,16 @@ function	Confirm_Change	{
 	.@class = getarg(0, -1);
 	.@back = getarg(1, false);
 	if( .@class < 0 ) {
-		mes "Unknown Class Error.";
+		mes "Erro indefinido.";
 		close;
 	}
-	mes "Do you want to change into ^0055FF"+jobname(.@class)+"^000000 class?";
-	.@job_option$ = " ~ Change into ^0055FF"+jobname(.@class)+"^000000 class";
+	mes "Você gostaria de mudar para ^0055FF"+jobname(.@class)+"^000000?";
+	.@job_option$ = " ~ Mudar para ^0055FF"+jobname(.@class)+"^000000";
 	if( .@class == Job_Novice_High)
-		.@job_option$ = " ~ ^0055FFRebirth^000000";
+		.@job_option$ = " ~ ^0055FFRenascer^000000";
 	
 	if (select(.@job_option$+": ~ ^777777" + 
-			((.@back) ?"Go back" : "Cancel") + "^000000") == 1) {
+			((.@back) ?"Voltar" : "Cancelar") + "^000000") == 1) {
 		Job_Change(.@class);
 	}
 	if (!.@back)
@@ -418,6 +418,10 @@ function	Get_Job_Equip	{
 				getitem 1960,1;	break;	//	Whip [1]
 			case Job_Super_Novice:
 				getitem 1208,1;	break;	//	Main Gauche [4]
+			case Job_Gunslinger:
+				getitem 13101,1; break;	//	Six Shooter [2]
+			case Job_Ninja:
+				getitem 13010,1; break;	//	Asura [2]
 			case Job_Star_Gladiator:
 				getitem 1550,1;	break;	//	Book [3]
 			case Job_Soul_Linker:
@@ -440,10 +444,6 @@ function	Get_Job_Equip	{
 				getitem 1302,1;	break;	//	Axe [4]
 			case Job_Thief:
 				getitem 1208,1;	break;	//	Main Gauche [4]
-			case Job_Gunslinger:
-				getitem 13101,1; break;	//	Six Shooter [2]
-			case Job_Ninja:
-				getitem 13010,1; break;	//	Asura [2]
 		}
 	}
 	return;
@@ -479,9 +479,9 @@ OnInit:
 	// Setting adjustments by PACKETVER
 	if( PACKETVER < 20161207 ) {
 		if( .BabyExpanded )
-			debugmes "jobmaster: BabyExpanded is disabled due to outdated PACKETVER.";
+			debugmes "jobmaster: BabyExpanded é desabilitado para este PACKETVER.";
 		if( .BabySummoner )
-			debugmes "jobmaster: BabySummoner is disabled due to outdated PACKETVER.";
+			debugmes "jobmaster: BabySummoner é desabilitado para este PACKETVER.";
 		.BabyExpanded = false;
 		.BabySummoner = false;
 	}
