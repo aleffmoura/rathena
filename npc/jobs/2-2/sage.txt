@@ -188,7 +188,7 @@ yuno_in02,38,61,5	script	Decano da Academia#sa	2_M_SAGE_OLD,{
 	end;
 }
 
-yuno_in03,154,35,4	script	Equipe da Academia#a	2_M_SAGE_B,{
+yuno_in03,154,35,4	script	Equipe da Academia#s	2_M_SAGE_B,{
 	mes "[Metheus Sylphe]";
 	if (Upper == 1) {
 		mes "Bem vindo à";

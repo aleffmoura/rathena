@@ -11,6 +11,7 @@
 //===== Additional Comments: =================================
 //= 1.0 First Version [L0ne_W0lf]
 //============================================================
+// traduzido e revisado por Haikenz
 
 // Juno
 yuno,109,167,5	script	Himinn	722,{
@@ -49,7 +50,7 @@ OnRecvCastlesc04:
 	end;
 }
 
-yuno,114,183,5	script	Skidbladnir	722,{
+yuno,114,183,5	script	Skatyrnir	722,{
 	end;
 
 OnAgitInit2:
@@ -68,7 +69,7 @@ OnRecvCastlear01:
 	end;
 }
 
-rachel,136,120,5	script	Cyr	722,{
+rachel,136,120,5	script	Syr	722,{
 	end;
 
 OnAgitInit2:
@@ -95,7 +96,7 @@ OnRecvCastlear04:
 	end;
 }
 
-rachel,124,130,1	script	Banadis	722,{
+rachel,124,130,1	script	Vanadis	722,{
 	end;
 
 OnAgitInit2:
