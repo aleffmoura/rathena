@@ -509,7 +509,7 @@ prt_in,227,45,0	script	Arqueologo#sign	804,{
 			mes "Você pode ter tido suas duvidas, mas fico feliz em confirmar que o Sinal realmente existe.";
 			mes "Obrigado de novo e eu espero que você passe de vez em quando para conversarmos.";
 			sign_q = 142;
-			getexp RENEWAL_EXP?200000:2000000,0;
+			getexp checkre(3)?200000:2000000,0;
 		}
 		else {
 			mes "Você ja foi visitar Engel Howard?";
@@ -535,7 +535,7 @@ prt_in,227,45,0	script	Arqueologo#sign	804,{
 		}
 		delitem 7178,1; //Star's_Sob
 		sign_q = 202;
-		getexp RENEWAL_EXP?10000:100000,0;
+		getexp checkre(3)?10000:100000,0;
 		getitem 617,1; //Old_Violet_Box
 	}
 	else if (sign_q > 201) {
@@ -1128,7 +1128,7 @@ morocc_in,115,154,5	script	Arruaceiro#sign	1_M_SIGNROGUE,{
 			mes "As respostas que você deu ao Ganaan mostram que você não e um caso perdido.";
 			mes "Agora você deve ir ver Daewoon em Payon.";
 			mes "E não esqueca de mostrar essa coisa Estelar ai para ele.";
-			if (RENEWAL_EXP) {
+			if (checkre(3)) {
 				if (BaseLevel < 60) getexp 300,0;
 				else if (BaseLevel < 70) getexp 750,0;
 				else if (BaseLevel < 80) getexp 1000,0;
@@ -1832,7 +1832,8 @@ payon_in03,11,31,4	script	Daewoon#sign	1_M_SIGNMONK2,{
 			if (.@pay_point > 29) {
 				sign_q = 15;
 				getitem 7177,1; //Part_Of_Star's_Sob
-				if (RENEWAL_EXP) {
+				if (checkre(3)) {
+				
 					if (BaseLevel < 60) getexp 300,0;
 					else if (BaseLevel < 70) getexp 750,0;
 					else if (BaseLevel < 80) getexp 1000,0;
@@ -1870,7 +1871,7 @@ payon_in03,11,31,4	script	Daewoon#sign	1_M_SIGNMONK2,{
 			else if ((.@pay_point > 26) && (.@pay_point < 30)) {
 				sign_q = 15;
 				getitem 7177,1; //Part_Of_Star's_Sob
-				if (RENEWAL_EXP) {
+				if (checkre(3)) {
 					if (BaseLevel < 60) getexp 300,0;
 					else if (BaseLevel < 70) getexp 750,0;
 					else if (BaseLevel < 80) getexp 1000,0;
@@ -3624,7 +3625,7 @@ cmd_in02,88,51,4	script	Cara Estranho#sign	1_M_SIGNART,{
 				if (countitem(750)) delitem 750,1; //Baphomet_Doll
 				if (countitem(751)) delitem 751,1; //Osiris_Doll
 				sign_q = 30;
-				if (RENEWAL_EXP) {
+				if (checkre(3)) {
 					if (BaseLevel < 60) getexp 300,0;
 					else if (BaseLevel < 70) getexp 500,0;
 					else if (BaseLevel < 80) getexp 800,0;
@@ -3696,7 +3697,7 @@ cmd_in02,88,51,4	script	Cara Estranho#sign	1_M_SIGNART,{
 			mes "Certo, pegue esse pedaço da Luz Estelar e va encontrar alguém chamado, hum, Bakerlan, em Alberta.";
 			sign_q = 35;
 			getitem 7177,1; //Part_Of_Star's_Sob
-			if (RENEWAL_EXP) {
+			if (checkre(3)) {
 				if (BaseLevel < 60) getexp 300,0;
 				else if (BaseLevel < 70) getexp 700,0;
 				else if (BaseLevel < 80) getexp 1900,0;
@@ -3727,7 +3728,7 @@ cmd_in02,88,51,4	script	Cara Estranho#sign	1_M_SIGNART,{
 			sign_q = 35;
 			getitem 7177,1; //Part_Of_Star's_Sob
 			Zeny += 20000;
-			if (RENEWAL_EXP) {
+			if (checkre(3)) {
 				if (BaseLevel < 60) getexp 300,0;
 				else if (BaseLevel < 70) getexp 700,0;
 				else if (BaseLevel < 80) getexp 1000,0;
@@ -4529,7 +4530,7 @@ alberta_in,125,101,5	script	Mercador	1_M_SIGNMCNT,{
 		mes "Ele lhe dira o que fazer agora.";
 		sign_q = 53;
 		getitem 7177,1; //Part_Of_Star's_Sob
-		if (RENEWAL_EXP) {
+		if (checkre(3)) {
 			if (BaseLevel < 60) getexp 500,0;
 			else if (BaseLevel < 70) getexp 800,0;
 			else if (BaseLevel < 80) getexp 1100,0;
@@ -5446,7 +5447,7 @@ yuno,330,100,4	script	Cavaleiro#ss	4_M_JOB_KNIGHT2,{
 				delitem2 7049,1,1,0,0,.@sign1,.@sign2,.@sign3,.@sign4;
 				sign_q = 39;
 				getitem 7181,1; //Receipt_01
-				if (RENEWAL_EXP) {
+				if (checkre(3)) {
 					if (BaseLevel < 60) getexp 100,0;
 					else if (BaseLevel < 70) getexp 200,0;
 					else if (BaseLevel < 80) getexp 400,0;
@@ -6772,7 +6773,7 @@ himinn,48,86,5	script	Valquíria#sign	4_F_VALKYRIE,{
 		mes "É agora seu dever para viajar, e procurar a verdadeira escuridão dos corações...";
 		sign_q = 82;
 		percentheal 100,100;
-		if (RENEWAL_EXP) {
+		if (checkre(3)) {
 			if (BaseLevel < 56) getexp 900,0;
 			else if ((BaseLevel > 55) && (BaseLevel < 61)) getexp 1200,0;
 			else if ((BaseLevel > 60) && (BaseLevel < 66)) getexp 2000,0;
@@ -7012,7 +7013,7 @@ que_sign01,196,39,4	script	Serin#serin	4_F_01,{
 				mes "O mínimo que posso fazer é mandar você de volta a Rune-Midgard e pedir ao Senhor das Trevas para te poupar.";
 				mes "Muito obrigada...";
 				sign_q = 200;
-				getexp RENEWAL_EXP?20000:200000,0;
+				getexp checkre(3)?20000:200000,0;
 				$@sign_w2 = 0;
 				donpcevent "Senhor das Trevas#serin::OnDisable";
 				close2;
@@ -7237,7 +7238,7 @@ que_sign01,197,195,4	script	Serin#witch	4_F_01,{
 				mes "O mínimo que posso fazer é mandar você de volta a Rune-Midgard e pedir ao Senhor das Trevas para te poupar.";
 				mes "Muito obrigada...";
 				sign_q = 200;
-				getexp RENEWAL_EXP?20000:200000,0;
+				getexp checkre(3)?20000:200000,0;
 				$@sign_w1 = 0;
 				close2;
 				warp "umbala",132,203;
@@ -7810,7 +7811,7 @@ niflheim,313,70,4	script	Senhora agradável#s	4_F_01,{
 				mes "^3355FFMas Serin também pôde se esquecer da tristeza.";
 				mes "As lágrimas que rolam em seu rosto e o leve sorriso em seus lábios dizem que as lembranças de você sempre estarão em seu coração.^000000";
 				delitem 2643,1; //Serin's_Gold_Ring_
-				getexp RENEWAL_EXP?50000:500000,0;
+				getexp checkre(3)?50000:500000,0;
 				close;
 			case 2:
 				emotion ET_CRY;
@@ -8364,7 +8365,7 @@ que_sign01,122,141,4	script	Bruxa#s	4_F_NFDEADMGCIAN,{
 				mes "Acho que ela quer te ver, por alguma razão, "+strcharinfo(0)+"...";
 				delitem 7313,5; //Seal_Of_Witch
 				sign_q = 129;
-				getexp RENEWAL_EXP?50000:500000,0;
+				getexp checkre(3)?50000:500000,0;
 				close;
 			}
 		}
@@ -8389,7 +8390,7 @@ que_sign01,122,141,4	script	Bruxa#s	4_F_NFDEADMGCIAN,{
 				mes "Acho que ela quer te ver, por alguma razão, "+strcharinfo(0)+"...";
 				delitem 7313,5; //Seal_Of_Witch
 				sign_q = 130;
-				getexp RENEWAL_EXP?30000:300000,0;
+				getexp checkre(3)?30000:300000,0;
 				close;
 			}
 		}
@@ -8411,7 +8412,7 @@ que_sign01,122,141,4	script	Bruxa#s	4_F_NFDEADMGCIAN,{
 		mes "Acho que ela quer te ver, por alguma razão, "+strcharinfo(0)+"...";
 		if (countitem(2643) == 1) sign_q = 129;
 		else sign_q = 130;
-		getexp RENEWAL_EXP?30000:300000,0;
+		getexp checkre(3)?30000:300000,0;
 		close;
 	}
 	else if (sign_q == 200) {
@@ -8434,7 +8435,7 @@ que_sign01,122,141,4	script	Bruxa#s	4_F_NFDEADMGCIAN,{
 		if (countitem(2642) > 0) delitem 2642,1; //Serin's_Gold_Ring
 		if (countitem(7308) > 0) delitem 7308,1; //Witch's_Potion
 		sign_q = 201;
-		getexp RENEWAL_EXP?20000:200000,0;
+		getexp checkre(3)?20000:200000,0;
 		close;
 	}
 	else if (sign_q > 200) {

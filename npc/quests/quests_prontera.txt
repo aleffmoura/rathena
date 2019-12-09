@@ -2039,7 +2039,7 @@ prt_church,185,106,3	script	Padre Bamph	1_M_PASTOR,{
 		else
 			prt_curse = 54;
 		changequest 18047,18049;
-		getexp RENEWAL_EXP?90000:1600000,0;
+		getexp checkre(3)?90000:1600000,0;
 		close;
 	}
 	else if (prt_curse > 43 && prt_curse < 50 && !aru_monas) {
@@ -2183,7 +2183,7 @@ prt_church,185,106,3	script	Padre Bamph	1_M_PASTOR,{
 					mes "Por favor aceite este dinheiro para cobri a passagem do Aeroplano.";
 					mes "Obrigado, e boa sorte.";
 					aru_monas = 6;
-					Zeny += (RENEWAL?5000:1500);
+					Zeny += (checkre(0)?5000:1500);
 					changequest 17002,17003;
 					close;
 				}
@@ -2266,7 +2266,7 @@ prt_church,184,110,3	script	Padre Biscuss	1_M_PASTOR,{
 		mes "Embora não possamos reconhecer isto publicamente, em nome da Catedral Prontera, eu quero te agradecer por toda a ajuda.";
 		prt_curse = 36;
 		completequest 18048;
-		getexp RENEWAL_EXP?90000:1600000,0;
+		getexp checkre(3)?90000:1600000,0;
 		close;
 	}
 	else if (prt_curse == 36) {

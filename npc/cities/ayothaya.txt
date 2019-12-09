@@ -111,7 +111,7 @@ ayothaya,152,68,1	script	Barqueiro Aibakthing#ayo2	4_M_THAIONGBAK,{
 		mes "Espero que possamos nos rever em breve!";
 		mes "Faça uma boa viagem!";
 		close2;
-		if (RENEWAL)
+		if (checkre(0))
 			warp "alberta",235,45;
 		else
 			warp "alberta",238,22;

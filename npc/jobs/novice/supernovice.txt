@@ -257,7 +257,8 @@ aldeba_in,216,169,5	script	Esere#sn	4_M_04,{
 		close;
 	}
 	if (BaseJob == Job_SuperNovice) {
-		if (RENEWAL) callfunc "Esseray_Ex";
+		if (checkre(0))
+			callfunc "Esseray_Ex";
 		mes "[Esere]";
 		mes "Ei, você é um membro do Clube do Aprendiz!";
 		mes "E como está se sentindo com isso?";

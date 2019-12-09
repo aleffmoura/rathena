@@ -109,7 +109,7 @@ lou_fild01,190,100,7	script	Garota#1lou	4_F_CHNDRESS1,{
 		mes "te ver novamente!";
 		mes "Tchau Tchau!";
 		close2;
-		if (RENEWAL)
+		if (checkre(0))
 			warp "alberta",236,40;
 		else
 			warp "alberta",235,45;

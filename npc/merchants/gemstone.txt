@@ -7,25 +7,25 @@
 //                \____/_|  \___/|_| |_|\__,_|___/               ||
 //                     Scripts                                   ||
 //===============================================================||
-// = VersÃ£o:                                                     ||
+// = Versão:                                                     ||
 // - 1.3                                                         ||
 //===============================================================||
-// = AlteraÃ§Ãµes:                                                 ||
-// - TraduÃ§Ã£o [Spell Master]                                     ||
+// = Alterações:                                                 ||
+// - Tradução [Spell Master]                                     ||
 //===============================================================||
-// = DescriÃ§Ã£o:                                                  ||
+// = Descrição:                                                  ||
 // - Troca gemas de uma cor por outra                            ||
 //===============================================================//
 
 payon,173,238,5	script	Jade#pay	4_M_SAGE_A,{
 	if (checkweight(1201,1) == 0) {
 		mes "^3355FFEspere um pouco!";
-		mes "Nesse momento, existem muitos itens com vocÃª.";
-		mes "Por favor retorne apÃ³s colocar alguns itens no ArmazÃ©m da Kafra.^000000";
+		mes "Nesse momento, existem muitos itens com você.";
+		mes "Por favor retorne após colocar alguns itens no Armazém da Kafra.^000000";
 		close;
 	}
 	mes "[Jade]";
-	mes "Traga para mim 2 Gemas da mesma cor, e eu vou trocÃ¡-las por Gemas de cores diferentes.";
+	mes "Traga para mim 2 Gemas da mesma cor, e eu vou trocá-las por Gemas de cores diferentes.";
 	next;
 	switch(select("Gemas Azuis para Vermelhas!","Gemas Vermelhas para Amarelas!","Gemas Amarelas para Azuis!")) {
 		case 1: callsub S_TradeGems,717,716;
@@ -40,46 +40,46 @@ payon,173,238,5	script	Jade#pay	4_M_SAGE_A,{
 	if (countitem(.@item_req) < 2) {
 		mes "[Jade]";
 		mes "Haha...!";
-		mes "VocÃª estÃ¡ de brincadeira comigo, certo?";
-		mes "Eu nÃ£o poderei fazer este serviÃ§o se vocÃª nÃ£o me trouxer as 2 "+getitemname(getarg(0))+"s!";
+		mes "Você está de brincadeira comigo, certo?";
+		mes "Eu não poderei fazer este serviço se você não me trouxer as 2 "+getitemname(getarg(0))+"s!";
 		close;
 	}
 	else {
 		.@gems = countitem(.@item_req) /2;
 		mes "[Jade]";
-		mes "Acredito que posso criar um total de "+.@gems+" "+ getitemname(getarg(1))+"s usando as "+getitemname(getarg(0))+"s que vocÃª tem no momento.";
+		mes "Acredito que posso criar um total de "+.@gems+" "+ getitemname(getarg(1))+"s usando as "+getitemname(getarg(0))+"s que você tem no momento.";
 		mes "O que gostaria de fazer?";
 		next;
-		switch(select("Me dÃª quantas puder.","Quero digitar quantas preciso.","Deixa pra lÃ¡.")) {
+		switch(select("Me dê quantas puder.","Quero digitar quantas preciso.","Deixa pra lá.")) {
 			case 1:
 			delitem .@item_req,.@gems * 2;
 			getitem .@item_id,.@gems;
 			break;
 			case 2:
 			mes "[Jade]";
-			mes "EntÃ£o aqui estÃ¡!";
+			mes "Então aqui está!";
 			mes "Sinta-se livre para voltar quando quiser.";
-			mes "Hm, o que vocÃª estÃ¡ olhando?";
+			mes "Hm, o que você está olhando?";
 			mes "Tem algo no meu rosto!?!?";
 			next;
 			while(1) {
 				input .@input,0,101;
 				if (.@input == 0) {
 					mes "[Jade]";
-					mes "EntÃ£o quantas gemas vai querer?";
-					mes "O mÃ¡ximo que vocÃª poderÃ¡ escolher Ã© 100.";
+					mes "Então quantas gemas vai querer?";
+					mes "O máximo que você poderá escolher é 100.";
 					close;
 				}
 				else if (.@input > 100) {
 					mes "[Jade]";
 					mes "Hunn...";
-					mes "Eu sÃ³ posso realizar a troca de atÃ© 100 gemas.";
+					mes "Eu só posso realizar a troca de até 100 gemas.";
 					next;
 				}
 				else if (.@gems < .@input) {
 					mes "[Jade]";
 					mes "Nenhuma!?";
-					mes "Acho que vocÃª precisa mudar de ideia...";
+					mes "Acho que você precisa mudar de ideia...";
 					next;
 				}
 				else break;
@@ -94,9 +94,9 @@ payon,173,238,5	script	Jade#pay	4_M_SAGE_A,{
 			close;
 		}
 		mes "[Jade]";
-		mes "EntÃ£o aqui estÃ¡!";
+		mes "Então aqui está!";
 		mes "Sinta-se livre para voltar quando quiser.";
-		mes "Hm, o que vocÃª estÃ¡ olhando?";
+		mes "Hm, o que você está olhando?";
 		mes "Tem algo no meu rosto!?!?";
 		close;
 	}

@@ -1012,7 +1012,7 @@ OnInit:
 
 OnEnable:
 	enablenpc "Sala de Água";
-	if (!RENEWAL) {
+	if (!checkre(0)) {
 		.MyMobs = 8;
 		monster "job_wiz",129,170,"Obeaune",1044,1,"Sala de Água::OnMyMobDead";
 	}
@@ -1185,7 +1185,7 @@ OnInit:
 
 OnEnable:
 	enablenpc "Sala da Terra";
-	if (!RENEWAL) {
+	if (!checkre(0)) {
 		.MyMobs = 10;
 		monster "job_wiz",120,102,"Hode",1127,1,"Sala da Terra::OnMyMobDead";
 		monster "job_wiz",111,93,"Savage",1166,1,"Sala da Terra::OnMyMobDead";
@@ -1281,7 +1281,7 @@ OnInit:
 OnEnable:
 	enablenpc "Sala da Terra#Door";
 	donpcevent "Sala da Terra::OnDisable";
-	if (!RENEWAL) {
+	if (!checkre(0)) {
 		.MyMobs = 7;
 		monster "job_wiz",116,97,"Flora",1118,1,"Sala da Terra#Door::OnMyMobDead";
 	}
@@ -1365,7 +1365,7 @@ OnInit:
 
 OnEnable:
 	enablenpc "Sala do Fogo";
-	if (!RENEWAL) {
+	if (!checkre(0)) {
 		.MyMobs = 8;
 		monster "job_wiz",58,110,"Zerom",1178,1,"Sala do Fogo::OnMyMobDead";
 		monster "job_wiz",54,89,"Desert Wolf",1106,1,"Sala do Fogo::OnMyMobDead";
@@ -1461,7 +1461,7 @@ OnEnable:
 	donpcevent "Sala do Fogo::OnDisable";
 	.MyMobs = 3;
 	monster "job_wiz",44,99,"Greatest General",1277,1,"Sala do Fogo#Door::OnMyMobDead";
-	if (RENEWAL) {
+	if (checkre(0)) {
 		monster "job_wiz",43,99,"Greatest General",1277,1,"Sala do Fogo#Door::OnMyMobDead";
 		monster "job_wiz",45,99,"Greatest General",1277,1,"Sala do Fogo#Door::OnMyMobDead";
 	}

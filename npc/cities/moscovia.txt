@@ -117,7 +117,7 @@ moscovia,166,53,4	script	R. Públicas de Moscóvia#2	4_F_RUSWOMAN2,{
 	mes "Você pode vir quando quiser.";
 	mes "Certo então, vamos lá.";
 	close2;
-	if (RENEWAL)
+	if (checkre(0))
 		warp "alberta",244,52;
 	else
 		warp "alberta",243,67;
